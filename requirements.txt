@@ -1,0 +1,19 @@
+# Deep Learning y modelos
+torch
+torchvision
+transformers
+
+# Visualización y análisis
+matplotlib
+seaborn
+pandas
+numpy
+scikit-learn
+Pillow
+
+# Desarrollo de apps
+gradio
+jupyterlab
+
+# Control de versiones
+dvc
