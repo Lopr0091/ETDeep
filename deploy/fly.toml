@@ -1,0 +1,20 @@
+app = "deploy-solitary-dew-2067"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "7860"
+
+[[services]]
+  internal_port = 7860
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+

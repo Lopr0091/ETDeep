@@ -1,0 +1,9 @@
+../notebooks
+../modelos
+../webapp
+../data
+../.devcontainer
+../.git
+../.github
+../*.ipynb
+../*.pyc
