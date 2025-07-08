@@ -79,12 +79,12 @@ MAX_LEN = 200
 tokenizer = get_tokenizer("basic_english")
 
 # Cargar vocabulario desde archivo
-with open("vocab/vocab_imdb.pkl", "rb") as f:
+with open("vocab_deploy/vocab_imdb_deploy.pkl", "rb") as f:
     vocab = pickle.load(f)
 
 # === Cargar modelos
 model = CNNFashion().to(device)
-model.load_state_dict(torch.load("modelos/cnn_fashion/mejor_modelo.pth", map_location=device))
+model.load_state_dict(torch.load("modelos_deploy/cnn_fashion_deploy/mejor_modelo_deploy.pth", map_location=device))
 model.eval()
 
 model_texto = SentimentTransformer(
@@ -95,7 +95,7 @@ model_texto = SentimentTransformer(
     num_layers=NUM_ENCODER_LAYERS,
     dropout=DROPOUT
 ).to(device)
-model_texto.load_state_dict(torch.load("modelos/transformer_imdb/mejor_modelo_imdb.pth", map_location=device))
+model_texto.load_state_dict(torch.load("modelos_deploy/transformer_imdb_deploy/mejor_modelo_imdb_deploy.pth", map_location=device))
 model_texto.eval()
 
 # === Preprocesamiento
