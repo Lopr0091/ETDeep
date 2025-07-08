@@ -1,19 +1,7 @@
-# Deep Learning y modelos
-torch
-torchvision
-transformers
-
-# Visualización y análisis
-matplotlib
-seaborn
-pandas
-numpy
-scikit-learn
-Pillow
-
-# Desarrollo de apps
+torch==2.2.2+cu118
+torchvision==0.17.2+cu118
+torchtext==0.17.2
+torchdata==0.7.1
 gradio
-jupyterlab
-
-# Control de versiones
-dvc
+pillow
+numpy<2.0.0

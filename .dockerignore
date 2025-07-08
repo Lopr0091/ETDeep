@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.ipynb
+.ipynb_checkpoints/
+.env
+.dvc/
+data/
+notebooks/
+
+# Ignora todo en modelos/ excepto archivos .pth
+modelos/*
+!modelos/*.pth

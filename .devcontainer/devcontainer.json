@@ -1,0 +1,23 @@
+{
+  "name": "ETDeep",
+  "runArgs": [
+    "--gpus", "all"
+  ],
+  "image": "etdeep-app",
+  "workspaceFolder": "/app",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/app,type=bind"
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/opt/conda/bin/python"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ]
+    }
+  },
+  "postCreateCommand": "pip install -r requirements.txt && python -m ipykernel install --user --name etdeep --display-name 'Python (ETDeep)'"
+}

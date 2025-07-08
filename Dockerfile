@@ -1,38 +1,28 @@
-# Imagen base con Python 3.10 y Debian slim
-FROM python:3.10-slim
+# Imagen base oficial PyTorch con CUDA
+FROM pytorch/pytorch:2.2.2-cuda11.8-cudnn8-runtime
 
-# Evita prompts interactivos
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Instalar dependencias del sistema
+# Sistema: solo lo necesario
 RUN apt-get update && apt-get install -y \
-    git \
     ffmpeg \
     libsm6 \
     libxext6 \
     curl \
-    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Instalar Rust (necesario para transformers y DVC)
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
-ENV PATH="/root/.cargo/bin:${PATH}"
-
-# Copiar el archivo de dependencias (desde la raíz ahora)
+# Instala dependencias Python
 COPY requirements.txt .
-
-# Instalar dependencias de Python
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+    pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cu118 -r requirements.txt
 
-# Copiar todo el proyecto al contenedor
+# Copia el resto del proyecto
 COPY . .
 
-# Exponer el puerto de Gradio
+# Exponer puerto Gradio
 EXPOSE 7860
 
-# Comando por defecto
+# Comando para producción
 CMD ["python", "webapp/app.py"]
